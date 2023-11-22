@@ -1,0 +1,25 @@
+{
+  "name": "brand",
+  "version": "1.0.0",
+  "description": "brand.fyle.uk: branding guidelines, etc for most of my projects...",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf out/* && mkdir -p out && rollup -c && cp -r src/pages/* out",
+    "deploy": "npx gh-pages -d out"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "@tsconfig/svelte": "^5.0.2",
+    "rollup": "^4.5.1",
+    "rollup-plugin-css-only": "^4.5.2",
+    "rollup-plugin-svelte": "^7.1.6",
+    "svelte-preprocess": "^5.1.1",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.2"
+  }
+}
