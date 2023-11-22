@@ -16,6 +16,38 @@ body {
     margin: 0;
 }
 
+/* idk what i'm doing here */
+
+section.darkBkg {
+    --text: #DDDDDD;
+    --subtext: #AAAAAA;
+}
+
+@media screen and (max-width: 600px) {
+    section.but-not-on-mobile {
+        --text: #DDDDDD;
+        --subtext: #AAAAAA;
+    }
+
+    section.darkBkg.but-not-on-mobile {
+        --text: #000000;
+        --subtext: #999999;
+    }
+}
+
+section > img.background {
+    --blur-amt: 8px;
+    --cropped: calc( 100% + ( calc( var(--blur-amt) * 2 ) ) );
+    filter: blur(var(--blur-amt)) brightness(0.75);
+    object-fit: cover;
+    position:absolute;
+    left:calc(0px - var(--blur-amt) );
+    top:calc(0px - var(--blur-amt) );
+    width:var(--cropped);
+    height:var(--cropped);
+    z-index:-1;
+}
+
 section {
     /* bad workaroudn but who cares */
     width:calc( 100% - 30px );
@@ -24,6 +56,8 @@ section {
     gap: 30px;
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
+    position:relative;
+    overflow:clip;
 }
 
 section > div {
@@ -73,11 +107,36 @@ section {
     }
 }
 
-/* big color_display */
+/* color_display */
 
 .big.color_display {
     width: 200px;
 }
+
+.small.color_display {
+    width: 25px;
+    position:relative;
+}
+                                   /* poor workaround but that's OK! */
+.small.color_display:not(:hover) > figcaption {
+    display: none;
+}
+
+.small.color_display > figcaption {
+    position:absolute;
+    padding: 5px 10px;
+    background-color: #666666;
+    --text: #DDDDDD;
+    --subtext: #AAAAAA;
+    left:50%;
+    transform:translateX(-50%);
+    border-radius:4px;
+}
+
+.small.color_display > figcaption > h4 {
+    white-space: nowrap;
+}
+
 
 @media screen and (max-width: 600px) {
     .big.color_display {
@@ -85,22 +144,22 @@ section {
     }
 }
 
-.big.color_display {
+.color_display {
     margin: 0;
 }
 
-.big.color_display > svg {
+.color_display > svg {
     width: 100%;
     height:auto;
     border-radius: 10000px; /* relative KILLS it !!! */
 }
 
-.big.color_display > figcaption > h3 {
+.color_display > figcaption > h3 {
     font-family: monospace;
     text-align: center;
 }
 
-.big.color_display > figcaption > h4 {
+.color_display > figcaption > h4 {
     font-style: oblique;
     text-align: center;
     font-weight: 400;
