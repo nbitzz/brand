@@ -1,24 +1,52 @@
 /* Temporary!!! :333 */
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;600&family=Source+Sans+3:wght@400;600&display=swap');
+
+:root {
+    --text: #000000;
+    --subtext: #999999;
+}
 
 h1, h2, h3, h4, p {
     font-family: "Source Sans Pro", "Source Sans 3", /* KILL YOURSELF */ sans-serif;
     margin: 0;
+    color: var(--text)
 }
 
+body {
+    margin: 0;
+}
 
 section {
-    width:100%;
-    display:flex;
+    /* bad workaroudn but who cares */
+    width:calc( 100% - 30px );
+    padding: 0 15px;
+    display:grid;
+    gap: 30px;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
 }
 
 section > div {
     flex-basis: 50%;
+    margin: auto 0;
 }
 
-@media screen and (max-width: 500px) {
+.about_this_section {
+    text-align: right;
+}
+
+@media screen and (max-width: 600px) {
     h1, h2, p {
         text-align: center;
+    }
+
+    section {
+        grid-auto-flow: row;
+        grid-auto-rows: 1fr;
+    }
+
+    section > .about_this_section {
+        flex-basis:30%;
     }
 
     .section_contents > * {
@@ -26,25 +54,19 @@ section > div {
         transform: translateX(-50%);
         left:50%;
     }
-    
-    section > .about_this_section {
-        flex-basis:30%;
+
+    /* fixes on mobile for some reason lol
+       god this is horrible what am i doing */
+    section {
+        display:grid;
     }
 }
 
-section > .about_this_section {
-    margin: 10px;
-    position:relative;
+section {
+    height: 50vh;
 }
 
-section > .about_this_section > div {
-    position:absolute;
-    top:50%;
-    transform:translateY(-50%);
-    text-align: right;
-}
-
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
     section {
         flex-direction: column;
         height: 100vh;
@@ -57,9 +79,9 @@ section > .about_this_section > div {
     width: 200px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
     .big.color_display {
-        width: 250px;
+        width: 150px;
     }
 }
 
@@ -81,4 +103,21 @@ section > .about_this_section > div {
 .big.color_display > figcaption > h4 {
     font-style: oblique;
     text-align: center;
+    font-weight: 400;
+    color: var(--subtext);
+}
+
+/* Primary colors */
+
+#header > .section_contents > div {
+    display: flex;
+    width: 100%;
+    justify-content: left;
+    gap: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    #header > .section_contents > div {
+        justify-content: center;
+    }
 }
