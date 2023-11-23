@@ -3,7 +3,7 @@
 
 :root {
     --text: #000000;
-    --subtext: #999999;
+    --subtext: #777777;
 }
 
 h1, h2, h3, h4, p {
@@ -37,12 +37,12 @@ section.darkBkg {
 
 section > img.background {
     --blur-amt: 8px;
-    --cropped: calc( 100% + ( calc( var(--blur-amt) * 2 ) ) );
+    --cropped: calc( 100% + ( var(--blur-amt) * 4 ) );
     filter: blur(var(--blur-amt)) brightness(0.75);
     object-fit: cover;
     position:absolute;
-    left:calc(0px - var(--blur-amt) );
-    top:calc(0px - var(--blur-amt) );
+    left:calc(0px - ( var(--blur-amt) * 2) );
+    top:calc(0px - ( var(--blur-amt) * 2) );
     width:var(--cropped);
     height:var(--cropped);
     z-index:-1;
@@ -63,6 +63,11 @@ section {
 section > div {
     flex-basis: 50%;
     margin: auto 0;
+}
+
+section > .about_this_section {
+    max-width:375px;
+    justify-self:right;
 }
 
 .about_this_section {
@@ -151,7 +156,6 @@ section {
 .color_display > svg {
     width: 100%;
     height:auto;
-    border-radius: 10000px; /* relative KILLS it !!! */
 }
 
 .color_display > figcaption > h3 {
@@ -166,22 +170,14 @@ section {
     color: var(--subtext);
 }
 
-/* Primary colors */
-
-#primary > .section_contents > div {
-    display: flex;
-    width: 100%;
-    justify-content: left;
-    gap: 10px;
-}
-
-@media screen and (max-width: 600px) {
-    #primary > .section_contents > div {
-        justify-content: center;
-    }
-}
 
 /* Display */
+
+@keyframes load {
+    0% { background:  #A1A1A1 }
+    50% { background: #999999 }
+    100% { background: #A1A1A1 }
+}
 
 .display {
     width: fit-content;
@@ -200,6 +196,11 @@ section {
     height: 25vh;
     object-fit: cover;
     max-width: 100%;
+
+    animation-name: load;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: 0.85s;
 }
 
 .display > figcaption {
@@ -210,8 +211,56 @@ section {
     text-align:center;
 }
 
-.display > figcaption > h4 {
+.display > figcaption > h4, .display > figcaption > h4 > a {
     font-family: "Inconsolata", monospace;
     font-weight: 400;
     color: var(--subtext);
+}
+
+.display > figcaption > h4 > a {
+    text-decoration: underline;
+    text-decoration-color: rgba(0,0,0,0);
+    transition-duration:100ms;
+    position: relative;
+}
+
+.display > figcaption > h4 > a:hover {
+    transition-duration:100ms;
+    text-decoration-color: var(--subtext);
+}
+
+.display > figcaption > h4 > a:before {
+    position:absolute;
+    content: "➜ ";
+    opacity:0;
+    transition-duration: 100ms;
+    left: -2em;
+    text-decoration: none;
+}
+
+.display > figcaption > h4 > a:hover:before {
+    opacity:1;
+    transition-duration: 100ms;
+    left: -1em;
+}
+
+/* Primary colors */
+
+#primary > .section_contents > div {
+    display: flex;
+    width: 100%;
+    justify-content: left;
+    gap: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    #primary > .section_contents > div {
+        justify-content: center;
+    }
+}
+
+/* Fonts */
+
+#fonts > .section_contents > a {
+    color: color-mix(in srgb, var(--text) 50%, var(--subtext) 50%)
 }
