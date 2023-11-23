@@ -155,7 +155,7 @@ section {
 }
 
 .color_display > figcaption > h3 {
-    font-family: monospace;
+    font-family: "Inconsolata", monospace;
     text-align: center;
 }
 
@@ -168,7 +168,7 @@ section {
 
 /* Primary colors */
 
-#header > .section_contents > div {
+#primary > .section_contents > div {
     display: flex;
     width: 100%;
     justify-content: left;
@@ -176,7 +176,42 @@ section {
 }
 
 @media screen and (max-width: 600px) {
-    #header > .section_contents > div {
+    #primary > .section_contents > div {
         justify-content: center;
     }
+}
+
+/* Display */
+
+.display {
+    width: fit-content;
+    margin: 0;
+    max-width: calc(100vw - 40px);
+}
+
+.display > div {
+    display: flex;
+    gap: 10px;
+}
+
+.display > div > video, .display > div > img {
+    border-radius: 16px;
+    border: 1px solid gray;
+    height: 25vh;
+    object-fit: cover;
+    max-width: 100%;
+}
+
+.display > figcaption {
+    margin-top: 5px;
+}
+
+.display > figcaption > * {
+    text-align:center;
+}
+
+.display > figcaption > h4 {
+    font-family: "Inconsolata", monospace;
+    font-weight: 400;
+    color: var(--subtext);
 }
