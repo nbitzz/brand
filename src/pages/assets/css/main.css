@@ -82,22 +82,20 @@ section > .about_this_section {
     section {
         grid-auto-flow: row;
         grid-auto-rows: 1fr;
+        /* fixes on mobile for some reason lol
+           god this is horrible what am i doing */
+        display:grid;
     }
 
     section > .about_this_section {
         flex-basis:30%;
+        justify-self:center;
     }
 
     .section_contents > * {
         position:relative;
         transform: translateX(-50%);
         left:50%;
-    }
-
-    /* fixes on mobile for some reason lol
-       god this is horrible what am i doing */
-    section {
-        display:grid;
     }
 }
 
@@ -261,6 +259,6 @@ section {
 
 /* Fonts */
 
-#fonts > .section_contents > a {
+#fonts > .section_contents a {
     color: color-mix(in srgb, var(--text) 50%, var(--subtext) 50%)
 }

@@ -23,3 +23,7 @@
 #stripBuilder > .strip > .item > button {
     min-width: 30px;
 }
+
+#stripBuilder > .strip > button {
+    width:100%;
+}
