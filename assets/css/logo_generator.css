@@ -1,0 +1,66 @@
+body {
+    background-color: #2a2a2a;
+    width: fit-content;
+    margin: 0;
+}
+
+#stripBuilder {
+    width: 100%;
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-auto-flow: column;
+}
+
+#stripBuilder > .strip > .item {
+    display:flex;
+    width:100%;
+    height: 20px;
+}
+
+#stripBuilder > .strip > .item > * {
+    height:100%;
+}
+
+#stripBuilder > .strip > .item > input {
+    flex-basis: 100%;
+}
+
+#stripBuilder > .strip > .item > button {
+    min-width: 30px;
+}
+
+#stripBuilder > .strip > button {
+    width:100%;
+}
+
+#stripBuilder > .strip > button,
+#stripBuilder > .strip > .item > input,
+#stripBuilder > .strip > .item > button {
+    background-color: #2a2a2a;
+    color: gray;
+    border: none;
+    height: 20px;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+#stripBuilder > .strip > .item > input {
+    padding: 0;
+}
+
+svg {
+    width: 250px;
+    height:auto;
+}
+
+#svgcontain {
+    display:flex;
+    justify-content: center;
+}
+
+#main {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}

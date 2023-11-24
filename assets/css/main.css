@@ -1,0 +1,378 @@
+/* Temporary!!! :333 */
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;600&family=Source+Sans+3:wght@400;600&display=swap');
+
+:root {
+    --text: #000000;
+    --subtext: #777777;
+}
+
+h1, h2, h3, h4, p {
+    font-family: "Source Sans Pro", "Source Sans 3", /* KILL YOURSELF */ sans-serif;
+    margin: 0;
+    color: var(--text)
+}
+
+body {
+    margin: 0;
+}
+
+/* idk what i'm doing here */
+
+section.darkBkg {
+    --text: #DDDDDD;
+    --subtext: #AAAAAA;
+}
+
+@media screen and (max-width: 600px) {
+    section.but-not-on-mobile {
+        --text: #DDDDDD;
+        --subtext: #AAAAAA;
+    }
+
+    section.darkBkg.but-not-on-mobile {
+        --text: #000000;
+        --subtext: #999999;
+    }
+}
+
+section > .background {
+    position:absolute;
+    left: 0px;
+    top:0px;
+    width:100%;
+    height:100%;
+    overflow: hidden;
+}
+
+section > .background > img {
+    --blur-amt: 8px;
+    --cropped: calc( 100% + ( var(--blur-amt) * 4 ) );
+    filter: blur(var(--blur-amt)) brightness(0.75);
+    object-fit: cover;
+    position:absolute;
+    left:calc(0px - ( var(--blur-amt) * 2) );
+    top:calc(0px - ( var(--blur-amt) * 2) );
+    width:var(--cropped);
+    height:var(--cropped);
+    z-index:-1;
+}
+
+section {
+    /* bad workaroudn but who cares */
+    width:calc( 100% - 30px );
+    padding: 0 15px;
+    display:grid;
+    gap: 30px;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    position:relative;
+    overflow:visible;
+}
+
+section > div {
+    flex-basis: 50%;
+    margin: auto 0;
+}
+
+section > .about_this_section {
+    max-width:375px;
+    justify-self:right;
+}
+
+.about_this_section {
+    text-align: right;
+}
+
+@media screen and (max-width: 600px) {
+    h1, h2, p {
+        text-align: center;
+    }
+
+    section {
+        grid-auto-flow: row;
+        grid-auto-rows: 1fr;
+        /* fixes on mobile for some reason lol
+           god this is horrible what am i doing */
+        display:grid;
+    }
+
+    section > .about_this_section {
+        flex-basis:30%;
+        justify-self:center;
+    }
+
+    .section_contents > * {
+        position:relative;
+        transform: translateX(-50%);
+        left:50%;
+    }
+}
+
+section {
+    height: 50vh;
+}
+
+@media screen and (max-width: 600px) {
+    section {
+        flex-direction: column;
+        height: 100vh;
+    }
+}
+
+/* color_display */
+
+.big.color_display {
+    width: 200px;
+}
+
+.small.color_display {
+    width: 25px;
+    position:relative;
+}
+
+.small.color_display:not(:hover) > figcaption {
+    opacity: 0;
+    transition-duration: 100ms;
+    transition-property: opacity;
+    left: -100vw;
+    transform: none;
+}
+
+.small.color_display > figcaption {
+    position:absolute;
+    padding: 5px 10px;
+    background-color: #666666;
+    --text: #DDDDDD;
+    --subtext: #AAAAAA;
+    left:50%;
+    transform:translateX(-50%);
+    border-radius:4px;
+    opacity: 1;
+    transition-duration: 100ms;
+    transition-property: opacity;
+}
+
+.small.color_display > figcaption > h3 {
+    font-size: 16px;
+}
+
+.small.color_display > figcaption > h4 {
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+
+@media screen and (max-width: 600px) {
+    .big.color_display {
+        width: 150px;
+    }
+}
+
+.color_display {
+    margin: 0;
+}
+
+.color_display > svg {
+    width: 100%;
+    height:auto;
+}
+
+.color_display > figcaption > h3 {
+    font-family: "Inconsolata", monospace;
+    text-align: center;
+}
+
+.color_display > figcaption > h4 {
+    font-style: oblique;
+    text-align: center;
+    font-weight: 400;
+    color: var(--subtext);
+}
+
+
+/* Display */
+
+@keyframes load {
+    0% { background:  #A1A1A1 }
+    50% { background: #999999 }
+    100% { background: #A1A1A1 }
+}
+
+.display {
+    width: fit-content;
+    margin: 0;
+    max-width: calc(100vw - 40px);
+}
+
+.display > div {
+    display: flex;
+    gap: 10px;
+}
+
+.display > div > video, .display > div > img {
+    border-radius: 16px;
+    border: 1px solid gray;
+    height: 25vh;
+    object-fit: cover;
+    max-width: 100%;
+
+    animation-name: load;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: 0.85s;
+}
+
+.display > figcaption {
+    margin-top: 5px;
+}
+
+.display > figcaption > * {
+    text-align:center;
+}
+
+.display > figcaption > h4, .display > figcaption > h4 > a {
+    font-family: "Inconsolata", monospace;
+    font-weight: 400;
+    color: var(--subtext);
+}
+
+.display > figcaption > h4 > a {
+    text-decoration: underline;
+    text-decoration-color: rgba(0,0,0,0);
+    transition-duration:100ms;
+    position: relative;
+}
+
+.display > figcaption > h4 > a:hover {
+    transition-duration:100ms;
+    text-decoration-color: var(--subtext);
+}
+
+.display > figcaption > h4 > a:before {
+    position:absolute;
+    content: "➜ ";
+    opacity:0;
+    transition-duration: 100ms;
+    left: -2em;
+    text-decoration: none;
+}
+
+.display > figcaption > h4 > a:hover:before {
+    opacity:1;
+    transition-duration: 100ms;
+    left: -1em;
+}
+
+/* Primary colors */
+
+#primary {
+    background-color: #F5F0E9;
+}
+
+#primary > .section_contents {
+    width: fit-content;
+}
+
+@media screen and (max-width: 600px) {
+    
+    #primary > .section_contents {
+        width: fit-content;
+        margin: auto;
+    }
+
+}
+
+#primary > .section_contents > hr {
+    border: 1px solid #BBB;
+    margin: 10px 0;
+}
+
+#primary > .section_contents > div {
+    display: flex;
+    width: 100%;
+}
+
+#primary > .section_contents > .big_primary {
+    justify-content: left;
+    gap: 10px;
+}
+
+#primary > .section_contents > .other_colors {
+    justify-content: center;
+    gap: 5px;
+}
+
+@media screen and (max-width: 600px) {
+    #primary > .section_contents > div {
+        justify-content: center;
+    }
+}
+
+/* Fonts */
+
+#fonts {
+    --text: #cad3f5;
+    --subtext: #a5adcb;
+    background-color: #24273a;
+    /* fixes color tooltips being clipped off in the primary section  */
+    z-index: -1;
+}
+
+#fonts > .section_contents h1 {
+    color: var(--subtext);
+}
+
+#fonts > .section_contents a {
+    color: var(--text);
+}
+
+/* Logo generator */
+
+#logo {
+    background-color: #2a2a2a;
+}
+
+#logo > .section_contents {
+    height: 100%;
+}
+
+#logo > .section_contents > iframe {
+    border: none;
+    width: 300px;
+    height: 100%;
+}
+
+/* Footer */
+
+footer {
+    height: 50px;
+    background-color: #111111;
+    position:relative;
+}
+
+footer > p {
+    color: #999999;
+    margin: 0 0 0 40px;
+    position:absolute;
+    top:50%;
+    transform: translateY(-50%);
+}
+
+@media screen and (max-width: 600px) {
+    footer > p {
+        margin: auto;
+        text-align: center;
+        width:100%;
+    }
+}
+
+footer > p > a {
+    color: #AAAAAA;
+    text-decoration-color: transparent;
+    transition-duration: 100ms;
+}
+
+footer > p > a:hover {
+    text-decoration-color: #AAAAAA;
+    transition-duration: 100ms;
+}
