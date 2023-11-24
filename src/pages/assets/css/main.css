@@ -35,7 +35,16 @@ section.darkBkg {
     }
 }
 
-section > img.background {
+section > .background {
+    position:absolute;
+    left: 0px;
+    top:0px;
+    width:100%;
+    height:100%;
+    overflow: hidden;
+}
+
+section > .background > img {
     --blur-amt: 8px;
     --cropped: calc( 100% + ( var(--blur-amt) * 4 ) );
     filter: blur(var(--blur-amt)) brightness(0.75);
@@ -57,7 +66,7 @@ section {
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
     position:relative;
-    overflow:clip;
+    overflow:visible;
 }
 
 section > div {
@@ -120,9 +129,13 @@ section {
     width: 25px;
     position:relative;
 }
-                                   /* poor workaround but that's OK! */
+
 .small.color_display:not(:hover) > figcaption {
-    display: none;
+    opacity: 0;
+    transition-duration: 100ms;
+    transition-property: opacity;
+    left: -100vw;
+    transform: none;
 }
 
 .small.color_display > figcaption {
@@ -134,10 +147,18 @@ section {
     left:50%;
     transform:translateX(-50%);
     border-radius:4px;
+    opacity: 1;
+    transition-duration: 100ms;
+    transition-property: opacity;
+}
+
+.small.color_display > figcaption > h3 {
+    font-size: 16px;
 }
 
 .small.color_display > figcaption > h4 {
     white-space: nowrap;
+    font-size: 14px;
 }
 
 
@@ -244,11 +265,41 @@ section {
 
 /* Primary colors */
 
+#primary {
+    background-color: #F5F0E9;
+}
+
+#primary > .section_contents {
+    width: fit-content;
+}
+
+@media screen and (max-width: 600px) {
+    
+    #primary > .section_contents {
+        width: fit-content;
+        margin: auto;
+    }
+
+}
+
+#primary > .section_contents > hr {
+    border: 1px solid #BBB;
+    margin: 10px 0;
+}
+
 #primary > .section_contents > div {
     display: flex;
     width: 100%;
+}
+
+#primary > .section_contents > .big_primary {
     justify-content: left;
     gap: 10px;
+}
+
+#primary > .section_contents > .other_colors {
+    justify-content: center;
+    gap: 5px;
 }
 
 @media screen and (max-width: 600px) {
@@ -259,6 +310,69 @@ section {
 
 /* Fonts */
 
+#fonts {
+    --text: #cad3f5;
+    --subtext: #a5adcb;
+    background-color: #24273a;
+    /* fixes color tooltips being clipped off in the primary section  */
+    z-index: -1;
+}
+
+#fonts > .section_contents h1 {
+    color: var(--subtext);
+}
+
 #fonts > .section_contents a {
-    color: color-mix(in srgb, var(--text) 50%, var(--subtext) 50%)
+    color: var(--text);
+}
+
+/* Logo generator */
+
+#logo {
+    background-color: #2a2a2a;
+}
+
+#logo > .section_contents {
+    height: 100%;
+}
+
+#logo > .section_contents > iframe {
+    border: none;
+    width: 300px;
+    height: 100%;
+}
+
+/* Footer */
+
+footer {
+    height: 50px;
+    background-color: #111111;
+    position:relative;
+}
+
+footer > p {
+    color: #999999;
+    margin: 0 0 0 40px;
+    position:absolute;
+    top:50%;
+    transform: translateY(-50%);
+}
+
+@media screen and (max-width: 600px) {
+    footer > p {
+        margin: auto;
+        text-align: center;
+        width:100%;
+    }
+}
+
+footer > p > a {
+    color: #AAAAAA;
+    text-decoration-color: transparent;
+    transition-duration: 100ms;
+}
+
+footer > p > a:hover {
+    text-decoration-color: #AAAAAA;
+    transition-duration: 100ms;
 }

@@ -8,7 +8,7 @@
 
 </script>
 
-<svg width="512" height="512">
+<svg width="512" height="512" viewBox="0 0 512 512"> 
     <!-- Dynamically modified by Svelte :) -->
     <defs>
         {#each strips.entries() as [stripNumber, strip]} 

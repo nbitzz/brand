@@ -2,7 +2,7 @@
     import Logo from "./elements/Logo.svelte"
 
     let logo: Logo
-    
+
     let strips: [string[], string[], string[]] = [
         ["#FB405A", "#7A2259"],
         ["#7A2259", "#FB405A"],
@@ -19,7 +19,9 @@
 </script>
 
 <div id="main">
-    <Logo bind:this={logo} bind:strips/>
+    <div id="svgcontain">
+        <Logo bind:this={logo} bind:strips/>
+    </div>
 
     <div id="stripBuilder">
         {#each strips as strip}
